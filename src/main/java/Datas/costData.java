@@ -1,16 +1,23 @@
 package Datas;
 
-public class costData {//½É·ÑÇé¿ö
-	private int Stu_id;//Ñ§ºÅ
-	private int Cost_1;//Ñ§ÔÓ·Ñ¼°Êé±¾·Ñ
-	private int Cost_2;//¸öÈË±£ÏÕ·Ñ
-	private int Cost_3;//Ë®¿¨·ÑÓÃ
-	private int Cost_4;//·¹¿¨·ÑÓÃ
+public class costData {//ç¼´è´¹æƒ…å†µ
+	private int Stu_id;//å­¦å·
+	private String Stu_na;//å­¦ç”Ÿå§“å
+	private int Cost_1;//å­¦æ‚è´¹åŠä¹¦æœ¬è´¹
+	private int Cost_2;//ä¸ªäººä¿é™©è´¹
+	private int Cost_3;//æ°´å¡è´¹ç”¨
+	private int Cost_4;//é¥­å¡è´¹ç”¨
 	public int getStu_id() {
 		return Stu_id;
 	}
 	public void setStu_id(int stu_id) {
 		Stu_id = stu_id;
+	}
+	public String getStu_na() {
+		return Stu_na;
+	}
+	public void setStu_na(String stu_na) {
+		Stu_na = stu_na;
 	}
 	public int getCost_1() {
 		return Cost_1;
