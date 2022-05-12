@@ -1,9 +1,11 @@
 package Datas;
 
 public class statusData {
-	private int Stu_id;//Ñ§ºÅ
-	private int	Sta_1;//½ÌÎñ´¦±¨µ½
-	private int	Sta_2;//ËŞÉá±¨µ½
+	private int Stu_id;//å­¦å·
+	private String Stu_na;//å­¦ç”Ÿå§“å
+	private int	Sta_1;//æ•™åŠ¡å¤„æŠ¥åˆ°
+	private int	Sta_2;//å®¿èˆæŠ¥åˆ°
+	private int	Sta_3;//ä½“æ£€æŠ¥åˆ°
 	public int getStu_id() {
 		return Stu_id;
 	}
@@ -28,5 +30,11 @@ public class statusData {
 	public void setSta_3(int sta_3) {
 		Sta_3 = sta_3;
 	}
-	private int	Sta_3;//Ìå¼ì±¨µ½
+	public String getStu_na() {
+		return Stu_na;
+	}
+	public void setStu_na(String stu_na) {
+		Stu_na = stu_na;
+	}
+	
 }
