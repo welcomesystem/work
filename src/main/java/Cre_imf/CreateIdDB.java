@@ -87,4 +87,24 @@ public class CreateIdDB {
 		}
 		return Id;
 	}
+	public int CreateStuIdDB(String ClassName) throws SQLException{
+		int Id=20200000;
+		con=DBConnection.getConnection();
+		try {
+			stmt=con.prepareStatement("select ID_STU,CLA_ID,PRO_ID from class_inf where CLA_NA=?");
+			stmt.setString(1,ClassName);
+			rs=stmt.executeQuery();
+		}
+		catch(Exception e) {
+			System.out.println("学生id查询sql语句查询失败");
+		}
+		try {
+			rs.next();
+			Id+=(Integer.parseInt(rs.getString("ID_STU"))+100*Integer.parseInt(rs.getString("CLA_ID"))+1000*Integer.parseInt(rs.getString("PRO_ID")));
+		}
+		catch(Exception e) {
+			System.out.println("学生id查询数据读取失败");
+		}
+		return Id;
+	}
 }
