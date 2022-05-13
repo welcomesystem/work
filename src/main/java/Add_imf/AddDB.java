@@ -1,14 +1,13 @@
 package Add_imf;
 
 import java.sql.*;
-import java.util.*;
 
 import DBConnection.DBConnection;
 import Datas.*;
 
 public class AddDB {
 	private Connection con = null;
-	public int addAnn(annData ann) { //添加公告
+	public int addAnn(annData ann) { //添加公告,返回成功，0失败
     	PreparedStatement pStmt = null; 
     	int count=0;  //记录更新数据的条数
         try {
@@ -27,7 +26,7 @@ public class AddDB {
         return count;
     }
 	
-	public int addForum(forumData forum) { //添加论坛帖子
+	public int addForum(forumData forum) { //添加论坛帖子,返回成功，0失败
     	PreparedStatement pStmt = null; 
     	int count=0;  //记录更新数据的条数
         try {
@@ -46,7 +45,7 @@ public class AddDB {
         return count;
     }
 	
-	public int addStu(InfoData student) { //添加学生
+	public int addStu(InfoData student) { //添加学生,返回成功，0失败
     	PreparedStatement pStmt = null;
     	PreparedStatement pStmt_1 = null;
     	ResultSet rs=null;
@@ -81,7 +80,7 @@ public class AddDB {
         return count;
     }
 	
-	public int addTea(TeaData teacher) { //添加教职工
+	public int addTea(TeaData teacher) { //添加教职工,返回成功，0失败
     	PreparedStatement pStmt = null; 
     	int count=0;  //记录更新数据的条数
         try {
