@@ -1,225 +1,108 @@
 package Add_imf;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
+import java.sql.*;
+import java.util.*;
 
-
+import DBConnection.DBConnection;
+import Datas.*;
 
 public class AddDB {
 	private Connection con = null;
-
-/*
-	public ArrayList<annData> getAllAnns() { //è·å–æ‰€æœ‰å…¬å‘Šä¿¡æ¯
-        ResultSet rs = null;
-        Statement sql = null;
-        ArrayList<annData> annList = new ArrayList<annData>();
-        try {
-        	con = DBConnection.getConnection();
-            sql = con.createStatement();
-	    	rs = sql.executeQuery("SELECT * from announcement");
-	    	while(rs.next()){
-	    		annData ann = new annData();
-	    		ann.setAnn_id(rs.getInt("ANN_ID")); //è·å–å…¬å‘ŠID
-	    		ann.setAnn_im(rs.getString("ANN_IM")); //è·å–å…¬å‘Šé“¾æ¥
-	    		
-	    		annList.add(ann);	    		
-	    	}  
-			rs.close();
-			sql.close();
-
-        } catch (Exception e) {
-           	e.printStackTrace();
-            System.out.println("è·å–æ‰€æœ‰å…¬å‘Šä¿¡æ¯å¤±è´¥ï¼");
-        } finally{
-        	DBConnection.closeConnection();//å…³é—­è¿æ¥
-		}		
-        return annList;
-    }
-	
-	public ArrayList<forumData> getAllForums() { //è·å–æ‰€æœ‰å¸–å­ä¿¡æ¯
-        ResultSet rs = null;
-        Statement sql = null;
-        ArrayList<forumData> forumList = new ArrayList<forumData>();
-        try {
-        	con = DBConnection.getConnection();
-            sql = con.createStatement();
-	    	rs = sql.executeQuery("SELECT * from forum");
-	    	while(rs.next()){
-	    		forumData forum = new forumData();
-	    		ann.setFor_id(rs.getInt("FOR_ID"));//è·å–å¸–å­ID
-	    		ann.setFor_im(rs.getString("FOR_IM"));//è·å–å¸–å­é“¾æ¥
-	    		
-	    		forumList.add(forum);	    		
-	    	}  
-			rs.close();
-			sql.close();
-
-        } catch (Exception e) {
-           	e.printStackTrace();
-            System.out.println("è·å–æ‰€æœ‰å¸–å­ä¿¡æ¯å¤±è´¥ï¼");
-        } finally{
-        	DBConnection.closeConnection();//å…³é—­è¿æ¥
-		}		
-        return annList;
-    }
-	
-	public ArrayList<teaData> getAllTeachers() {//è·å–æ‰€æœ‰æ•™èŒå·¥ä¿¡æ¯
-        ResultSet rs = null;
-        Statement sql = null;
-        ArrayList<teaData> teacherList = new ArrayList<teaData>();
-        try {
-        	con = DBConnection.getConnection();
-            sql = con.createStatement();
-	    	rs = sql.executeQuery("SELECT * from teacher_inf");
-	    	while(rs.next()){
-	    		teaData teacher = new teaData();
-	    		teacher.setTea_id(rs.getInt("TEA_ID"));//è·å–æ•™èŒå·¥å·
-	    		teacher.setTea_na(rs.getInt("TEA_NA"));//è·å–æ•™èŒå·¥å§“å
-	    		teacher.setTea_po(rs.getInt("TEA_PO"));//è·å–æ•™èŒå·¥æ”¿æ²»é¢è²Œ
-	    		teacher.setTea_ph(rs.getInt("TEA_PH"));//è·å–æ•™èŒå·¥ç”µè¯
-	    		teacher.setTea_em(rs.getInt("TEA_EM"));//è·å–æ•™èŒå·¥é‚®ç®±
-	    		teacher.setTea_wo(rs.getInt("TEA_WO"));//è·å–æ•™èŒå·¥åŠå…¬å®¤
-
-	    		teacherList.add(teacher);	    		
-	    	}  
-			rs.close();
-			sql.close();
-
-        } catch (Exception e) {
-           	e.printStackTrace();
-            System.out.println("è·å–æ‰€æœ‰æ•™èŒå·¥ä¿¡æ¯å¤±è´¥ï¼");
-        } finally{
-        	DBConnection.closeConnection();//å…³é—­è¿æ¥
-		}		
-        return studentList;
-    }
-	
-	public ArrayList<infoData> getAllStudents() {//è·å–æ‰€æœ‰å­¦ç”Ÿä¿¡æ¯
-        ResultSet rs = null;
-        Statement sql = null;
-        ArrayList<infoData> studentList = new ArrayList<infoData>();
-        try {
-        	con = DBConnection.getConnection();
-            sql = con.createStatement();
-	    	rs = sql.executeQuery("SELECT * from student_inf");
-	    	while(rs.next()){
-	    		infoData student = new infoData();
-	    		student.setStu_id(rs.getInt("STU_ID"));//è·å–å­¦ç”Ÿå­¦å·
-	    		student.setCla_id(rs.getInt("CLA_ID"));//è·å–å­¦ç”Ÿæ‰€åœ¨ç­çº§ç¼–å·
-	    		student.setDor_id(rs.getInt("DOR_ID"));//è·å–å­¦ç”Ÿå®¿èˆé—¨ç‰Œå·
-	    		student.setStu_na(rs.getString("STU_NA"));//è·å–å­¦ç”Ÿå§“å
-	    		student.setNatio(rs.getString("NATIO"));//è·å–å­¦ç”Ÿæ°‘æ—
-	    		student.setStu_br(rs.getString("STU_BR"));//è·å–å­¦ç”Ÿå‡ºç”Ÿæ—¥æœŸ
-	    		student.setStu_ge(rs.getInt("STU_GE"));//è·å–å­¦ç”Ÿæ€§åˆ«
-	    		student.setId_num(rs.getInt("ID_NUM"));//è·å–å­¦ç”Ÿèº«ä»½è¯å·
-	    		student.setPosta(rs.getInt("POSTA"));//è·å–å­¦ç”Ÿæ”¿æ²»é¢è²Œ
-	    		student.setPlres(rs.getString("PLRES"));//è·å–å­¦ç”Ÿå±…ä½çœä»½
-	    		
-	    		studentList.add(student);	    		
-	    	}  
-			rs.close();
-			sql.close();
-
-        } catch (Exception e) {
-           	e.printStackTrace();
-            System.out.println("è·å–æ‰€æœ‰å­¦ç”Ÿä¿¡æ¯å¤±è´¥ï¼");
-        } finally{
-        	DBConnection.closeConnection();//å…³é—­è¿æ¥
-		}		
-        return studentList;
-    }
-*/	
-	public int addAnn(annData ann) { //æ·»åŠ å…¬å‘Š
+	public int addAnn(annData ann) { //Ìí¼Ó¹«¸æ
     	PreparedStatement pStmt = null; 
-    	int count=0;  //è®°å½•æ›´æ–°æ•°æ®çš„æ¡æ•°
+    	int count=0;  //¼ÇÂ¼¸üĞÂÊı¾İµÄÌõÊı
         try {
         	con=DBConnection.getConnection();
     		pStmt = con.prepareStatement("insert into announcement (ANN_ID, ANN_IM) values (?,?)");
-    		pStmt.setInt(1, ann.getAnn_id());	//å…¬å‘Šç¼–å·	
-    		pStmt.setString(2, ann.getAnn_im()); //å…¬å‘Šé“¾æ¥			
+    		pStmt.setInt(1, ann.getAnn_id());	//¹«¸æ±àºÅ	
+    		pStmt.setString(2, ann.getAnn_im()); //¹«¸æÁ´½Ó			
     		count = pStmt.executeUpdate();  
 			pStmt.close();
         } catch (Exception e) {
            	e.printStackTrace();
-            System.out.println("æ·»åŠ å…¬å‘Šå¤±è´¥ï¼");
+            System.out.println("Ìí¼Ó¹«¸æÊ§°Ü£¡");
         } finally{
         	DBConnection.closeConnection();
 		}		
         return count;
     }
 	
-	public int addForum(forumData forum) { //æ·»åŠ è®ºå›å¸–å­
+	public int addForum(forumData forum) { //Ìí¼ÓÂÛÌ³Ìû×Ó
     	PreparedStatement pStmt = null; 
-    	int count=0;  //è®°å½•æ›´æ–°æ•°æ®çš„æ¡æ•°
+    	int count=0;  //¼ÇÂ¼¸üĞÂÊı¾İµÄÌõÊı
         try {
         	con=DBConnection.getConnection();
     		pStmt = con.prepareStatement("insert into announcement (FOR_ID, FOR_IM) values (?,?)");
-    		pStmt.setInt(1, forum.getFor_id());	//å¸–å­ç¼–å·	
-    		pStmt.setString(2, forum.getFor_im()); //å¸–å­é“¾æ¥			
+    		pStmt.setInt(1, forum.getFor_id());	//Ìû×Ó±àºÅ	
+    		pStmt.setString(2, forum.getFor_im()); //Ìû×ÓÁ´½Ó			
     		count = pStmt.executeUpdate();  
 			pStmt.close();
         } catch (Exception e) {
            	e.printStackTrace();
-            System.out.println("æ·»åŠ å¸–å­å¤±è´¥ï¼");
+            System.out.println("Ìí¼ÓÌû×ÓÊ§°Ü£¡");
         } finally{
         	DBConnection.closeConnection();
 		}		
         return count;
     }
 	
-	public int addStu(infoData student) { //æ·»åŠ å­¦ç”Ÿ
-    	PreparedStatement pStmt = null; 
-    	int count=0;  //è®°å½•æ›´æ–°æ•°æ®çš„æ¡æ•°
+	public int addStu(InfoData student) { //Ìí¼ÓÑ§Éú
+    	PreparedStatement pStmt = null;
+    	PreparedStatement pStmt_1 = null;
+    	ResultSet rs=null;
+    	int count=0;  //¼ÇÂ¼¸üĞÂÊı¾İµÄÌõÊı
         try {
+        	pStmt_1 = con.prepareStatement("select CLA_ID from class_inf where CLA_NA=?");
+        	pStmt_1.setString(1,student.getCla_na());
+        	rs=pStmt_1.executeQuery();
         	con=DBConnection.getConnection();
     		pStmt = con.prepareStatement("insert into student_inf (STU_ID, CLA_ID, DOR_ID, NATIO, STU_BR, STU_GE, ID_NUM, POSTA, PLRES) values (?,?,?,?,?,?,?,?,?,?)");
-
-    		pStmt.setInt(1, student.getStu_id());//æ·»åŠ å­¦ç”Ÿå­¦å·
-    		pStmt.setInt(2, student.getCla_id());//æ·»åŠ å­¦ç”Ÿæ‰€åœ¨ç­çº§ç¼–å·
-    		pStmt.setInt(3, student.getDor_id());//æ·»åŠ å­¦ç”Ÿå®¿èˆé—¨ç‰Œå·
-    		pStmt.setString(4, student.getStu_na());//æ·»åŠ å­¦ç”Ÿå§“å
-    		pStmt.setString(5, student.getNatio());//æ·»åŠ å­¦ç”Ÿæ°‘æ—
-    		pStmt.setString(6, student.getStu_br());//æ·»åŠ å­¦ç”Ÿå‡ºç”Ÿæ—¥æœŸ
-    		pStmt.setInt(7, student.getStu_ge());//æ·»åŠ å­¦ç”Ÿæ€§åˆ«
-    		pStmt.setString(8, student.getId_num());//æ·»åŠ å­¦ç”Ÿèº«ä»½è¯å·
-    		pStmt.setInt(9, student.getPosta());//æ·»åŠ å­¦ç”Ÿæ”¿æ²»é¢è²Œ
-    		pStmt.setInt(10, student.getPlres());//æ·»åŠ å­¦ç”Ÿå±…ä½çœä»½
+    		pStmt.setInt(1, student.getStu_id());//Ìí¼ÓÑ§ÉúÑ§ºÅ
+    		pStmt.setInt(2, rs.getInt("CLA_ID"));//Ìí¼ÓÑ§ÉúËùÔÚ°à¼¶±àºÅ
+    		pStmt_1 = con.prepareStatement("select DOR_ID from dormitory_inf where DOR=?");
+    		pStmt_1.setInt(1,student.getDor_na());
+    		pStmt.setInt(3, rs.getInt("DOR_ID"));//Ìí¼ÓÑ§ÉúËŞÉáÃÅÅÆºÅ
+    		pStmt.setString(4, student.getStu_na());//Ìí¼ÓÑ§ÉúĞÕÃû
+    		pStmt.setString(5, student.getNatio());//Ìí¼ÓÑ§ÉúÃñ×å
+    		pStmt.setString(6, student.getStu_br());//Ìí¼ÓÑ§Éú³öÉúÈÕÆÚ
+    		pStmt.setInt(7, student.getStu_ge());//Ìí¼ÓÑ§ÉúĞÔ±ğ
+    		pStmt.setString(8, student.getId_num());//Ìí¼ÓÑ§ÉúÉí·İÖ¤ºÅ
+    		pStmt.setInt(9, student.getPosta());//Ìí¼ÓÑ§ÉúÕşÖÎÃæÃ²
+    		pStmt.setString(10, student.getPlres());//Ìí¼ÓÑ§Éú¾Ó×¡Ê¡·İ
     		
-    		count = pStmt.executeUpdate();  //æ‰§è¡Œ
+    		count = pStmt.executeUpdate();  //Ö´ĞĞ
 			pStmt.close();
         } catch (Exception e) {
            	e.printStackTrace();
-            System.out.println("æ·»åŠ å­¦ç”Ÿå¤±è´¥ï¼");
+            System.out.println("Ìí¼ÓÑ§ÉúÊ§°Ü£¡");
         } finally{
-        	DBConnection.closeConnection();//å…³é—­è¿æ¥
+        	DBConnection.closeConnection();//¹Ø±ÕÁ¬½Ó
 		}		
         return count;
     }
 	
-	public int addTea(teaData teacher) { //æ·»åŠ æ•™èŒå·¥
+	public int addTea(TeaData teacher) { //Ìí¼Ó½ÌÖ°¹¤
     	PreparedStatement pStmt = null; 
-    	int count=0;  //è®°å½•æ›´æ–°æ•°æ®çš„æ¡æ•°
+    	int count=0;  //¼ÇÂ¼¸üĞÂÊı¾İµÄÌõÊı
         try {
         	con=DBConnection.getConnection();
     		pStmt = con.prepareStatement("insert into teacher_inf (TEA_ID, TEA_NA, TEA_PO, TEA_PH, TEA_EM, TEA_WO) values (?,?,?,?,?)");
     	
-    		pStmt.setInt(1, teacher.getTea_id());//æ·»åŠ æ•™èŒå·¥å·
-    		pStmt.setString(2, teacher.getTea_na());//æ·»åŠ æ•™èŒå·¥å§“å
-    		pStmt.setString(3, teacher.getTea_po());//æ·»åŠ æ•™èŒå·¥æ”¿æ²»é¢è²Œ
-    		pStmt.setString(4, teacher.getTea_ph());//æ·»åŠ æ•™èŒå·¥ç”µè¯
-    		pStmt.setString(5, teacher.getTea_em());//æ·»åŠ æ•™èŒå·¥é‚®ç®±
-    		pStmt.setString(6, teacher.getTea_wo());//æ·»åŠ æ•™èŒå·¥åŠå…¬å®¤
+    		pStmt.setInt(1, teacher.getTea_id());//Ìí¼Ó½ÌÖ°¹¤ºÅ
+    		pStmt.setString(2, teacher.getTea_na());//Ìí¼Ó½ÌÖ°¹¤ĞÕÃû
+    		//pStmt.setString(3, teacher.getTea_po());//Ìí¼Ó½ÌÖ°¹¤ÕşÖÎÃæÃ²
+    		pStmt.setString(4, teacher.getTea_ph());//Ìí¼Ó½ÌÖ°¹¤µç»°
+    		pStmt.setString(5, teacher.getTea_em());//Ìí¼Ó½ÌÖ°¹¤ÓÊÏä
+    		pStmt.setString(6, teacher.getTea_wo());//Ìí¼Ó½ÌÖ°¹¤°ì¹«ÊÒ
 
     		
-    		count = pStmt.executeUpdate();  //æ‰§è¡Œ
+    		count = pStmt.executeUpdate();  //Ö´ĞĞ
 			pStmt.close();
         } catch (Exception e) {
            	e.printStackTrace();
-            System.out.println("æ·»åŠ æ•™èŒå·¥å¤±è´¥ï¼");
+            System.out.println("Ìí¼Ó½ÌÖ°¹¤Ê§°Ü£¡");
         } finally{
-        	DBConnection.closeConnection();//å…³é—­è¿æ¥
+        	DBConnection.closeConnection();//¹Ø±ÕÁ¬½Ó
 		}		
         return count;
     }
