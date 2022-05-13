@@ -1,6 +1,5 @@
 package Cre_imf;
 
-import Datas.*;
 import java.sql.*;
 import DBConnection.*;
 public class CreateIdDB {
@@ -18,6 +17,7 @@ public class CreateIdDB {
 			System.out.println("教职工id查询sql语句查询失败");
 		}
 		try {
+			rs.next();
 			Id=Integer.parseInt(rs.getString("ID_TEA"));
 		}
 		catch(Exception e) {
@@ -44,6 +44,7 @@ public class CreateIdDB {
 			System.out.println("论坛id查询sql语句查询失败");
 		}
 		try {
+			rs.next();
 			Id=Integer.parseInt(rs.getString("ID_FOR"));
 		}
 		catch(Exception e) {
@@ -70,6 +71,7 @@ public class CreateIdDB {
 			System.out.println("公告id查询sql语句查询失败");
 		}
 		try {
+			rs.next();
 			Id=Integer.parseInt(rs.getString("ID_ANN"));
 		}
 		catch(Exception e) {
