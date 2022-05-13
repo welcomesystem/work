@@ -10,7 +10,7 @@ import student.StudentInfo;
 
 
 public class AddDB {
-	private Connection conn = null;
+	private Connection con = null;
 
 /*
 	public ArrayList<annData> getAllAnns() { //获取所有公告信息
@@ -18,7 +18,7 @@ public class AddDB {
         Statement sql = null;
         ArrayList<annData> annList = new ArrayList<annData>();
         try {
-        	conn = DBConnection.getConnection();
+        	con = DBConnection.getConnection();
             sql = conn.createStatement();
 	    	rs = sql.executeQuery("SELECT * from announcement");
 	    	while(rs.next()){
@@ -45,8 +45,8 @@ public class AddDB {
         Statement sql = null;
         ArrayList<forumData> forumList = new ArrayList<forumData>();
         try {
-        	conn = DBConnection.getConnection();
-            sql = conn.createStatement();
+        	con = DBConnection.getConnection();
+            sql = con.createStatement();
 	    	rs = sql.executeQuery("SELECT * from forum");
 	    	while(rs.next()){
 	    		forumData forum = new forumData();
@@ -72,8 +72,8 @@ public class AddDB {
         Statement sql = null;
         ArrayList<teaData> teacherList = new ArrayList<teaData>();
         try {
-        	conn = DBConnection.getConnection();
-            sql = conn.createStatement();
+        	con = DBConnection.getConnection();
+            sql = con.createStatement();
 	    	rs = sql.executeQuery("SELECT * from teacher_inf");
 	    	while(rs.next()){
 	    		teaData teacher = new teaData();
@@ -103,8 +103,8 @@ public class AddDB {
         Statement sql = null;
         ArrayList<infoData> studentList = new ArrayList<infoData>();
         try {
-        	conn = DBConnection.getConnection();
-            sql = conn.createStatement();
+        	con = DBConnection.getConnection();
+            sql = con.createStatement();
 	    	rs = sql.executeQuery("SELECT * from student_inf");
 	    	while(rs.next()){
 	    		infoData student = new infoData();
@@ -137,7 +137,7 @@ public class AddDB {
     	PreparedStatement pStmt = null; 
     	int count=0;  //记录更新数据的条数
         try {
-        	conn=DBConnection.getConnection();
+        	con=DBConnection.getConnection();
     		pStmt = con.prepareStatement("insert into announcement (ANN_ID, ANN_IM) values (?,?)");
     		pStmt.setInt(1, ann.getAnn_id());	//公告编号	
     		pStmt.setString(2, ann.getAnn_im()); //公告链接			
@@ -156,8 +156,8 @@ public class AddDB {
     	PreparedStatement pStmt = null; 
     	int count=0;  //记录更新数据的条数
         try {
-        	conn=DBConnection.getConnection();
-    		pStmt = conn.prepareStatement("insert into announcement (FOR_ID, FOR_IM) values (?,?)");
+        	con=DBConnection.getConnection();
+    		pStmt = con.prepareStatement("insert into announcement (FOR_ID, FOR_IM) values (?,?)");
     		pStmt.setInt(1, forum.getFor_id());	//帖子编号	
     		pStmt.setString(2, forum.getFor_im()); //帖子链接			
     		count = pStmt.executeUpdate();  
@@ -175,8 +175,8 @@ public class AddDB {
     	PreparedStatement pStmt = null; 
     	int count=0;  //记录更新数据的条数
         try {
-        	conn=DBConnection.getConnection();
-    		pStmt = conn.prepareStatement("insert into student_inf (STU_ID, CLA_ID, DOR_ID, NATIO, STU_BR, STU_GE, ID_NUM, POSTA, PLRES) values (?,?,?,?,?,?,?,?,?,?)");
+        	con=DBConnection.getConnection();
+    		pStmt = con.prepareStatement("insert into student_inf (STU_ID, CLA_ID, DOR_ID, NATIO, STU_BR, STU_GE, ID_NUM, POSTA, PLRES) values (?,?,?,?,?,?,?,?,?,?)");
 
     		pStmt.setInt(1, student.getStu_id());//添加学生学号
     		pStmt.setInt(2, student.getCla_id());//添加学生所在班级编号
@@ -204,8 +204,8 @@ public class AddDB {
     	PreparedStatement pStmt = null; 
     	int count=0;  //记录更新数据的条数
         try {
-        	conn=DBConnection.getConnection();
-    		pStmt = conn.prepareStatement("insert into teacher_inf (TEA_ID, TEA_NA, TEA_PO, TEA_PH, TEA_EM, TEA_WO) values (?,?,?,?,?)");
+        	con=DBConnection.getConnection();
+    		pStmt = con.prepareStatement("insert into teacher_inf (TEA_ID, TEA_NA, TEA_PO, TEA_PH, TEA_EM, TEA_WO) values (?,?,?,?,?)");
     	
     		pStmt.setInt(1, teacher.getTea_id());//添加教职工号
     		pStmt.setString(2, teacher.getTea_na());//添加教职工姓名
