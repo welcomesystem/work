@@ -6,35 +6,30 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
 
-/**
- * Servlet implementation class PasswdCheck
- */
-public class PasswdCheck extends HttpServlet {
+public class PasswdCheck extends HttpServlet {//获得账号，密码，返回验证情况，权限
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public PasswdCheck() {
         super();
-        // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		doPost(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		int Id=Integer.parseInt(request.getParameter(""));//获取前端用户输入的id
+		int PassWord=Integer.parseInt(request.getParameter(""));//获得前端用户输入的密码
+		int Jud=0;
+		JudgeDB Get_Jud=new JudgeDB();
+		try {
+			Jud=Get_Jud.JudgePwdDB(Id,PassWord);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		PrintWriter out = response.getWriter();
+		out.print(Jud);//返回权限类型，-1为登录失败
 	}
-
 }
