@@ -11,10 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import Datas.*;
 
-@WebServlet("/CostCensus")
-public class CostCensus extends HttpServlet {
+@WebServlet("/AnnCensus")
+public class AnnCensus extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public CostCensus() {
+    public AnnCensus() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -26,31 +26,23 @@ public class CostCensus extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");//返回text
 		PrintWriter out = response.getWriter();
 		QueryDB Query =new QueryDB();
-		String classname= request.getParameter("");//传入班级
 		try {
-			ArrayList<costData> cost=new ArrayList<costData>();
-			cost=Query.allcostQuery(classname);
+			ArrayList<annData> AnnData=Query.allannQuery();
 			String jsonData="[";
-			for(int i=0;i<cost.size();i++)
+			for(int i=0;i<AnnData.size();i++)
 			{
-				costData co=cost.get(i);
+				annData Ann=AnnData.get(i);
 				jsonData+="{";
-				jsonData+="\"json数据\":"+co.getCost_1()+",";//学杂费及书本费
-				jsonData+="\"json数据\":"+co.getCost_2()+",";//个人保险费
-				jsonData+="\"json数据\":"+co.getCost_3()+",";//水卡费用
-				jsonData+="\"json数据\":"+co.getCost_4()+",";//饭卡费用
-				jsonData+="\"json数据\":"+co.getStu_id()+",";//学号
-				jsonData+="\"json数据\":\""+co.getStu_name()+"\"";//姓名
+				jsonData+="\"json数据\":"+Ann.getAnn_id()+",";//公告编号
+				jsonData+="\"json数据\":\""+Ann.getAnn_im()+"\"";//公告链接
 				jsonData+="},";
 			}
 			out.print(jsonData.substring(0, jsonData.length()-1));
 			out.print("]");
 			out.flush();
 			out.close();
-		}
-		catch(SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-
 }

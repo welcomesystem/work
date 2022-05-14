@@ -7,14 +7,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.sql.*;
 import Datas.*;
 
-@WebServlet("/CostCensus")
-public class CostCensus extends HttpServlet {
+@WebServlet("/TeaQuery")
+public class TeaQuery extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public CostCensus() {
+    public TeaQuery() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -24,27 +23,19 @@ public class CostCensus extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");//返回text
+		int id=Integer.parseInt(request.getParameter(""));//传入学生学号
 		PrintWriter out = response.getWriter();
 		QueryDB Query =new QueryDB();
-		String classname= request.getParameter("");//传入班级
 		try {
-			ArrayList<costData> cost=new ArrayList<costData>();
-			cost=Query.allcostQuery(classname);
-			String jsonData="[";
-			for(int i=0;i<cost.size();i++)
-			{
-				costData co=cost.get(i);
-				jsonData+="{";
-				jsonData+="\"json数据\":"+co.getCost_1()+",";//学杂费及书本费
-				jsonData+="\"json数据\":"+co.getCost_2()+",";//个人保险费
-				jsonData+="\"json数据\":"+co.getCost_3()+",";//水卡费用
-				jsonData+="\"json数据\":"+co.getCost_4()+",";//饭卡费用
-				jsonData+="\"json数据\":"+co.getStu_id()+",";//学号
-				jsonData+="\"json数据\":\""+co.getStu_name()+"\"";//姓名
-				jsonData+="},";
-			}
-			out.print(jsonData.substring(0, jsonData.length()-1));
-			out.print("]");
+			TeaData teacher =new TeaData();
+			teacher=Query.TeaDataInfoQuery(id);
+			String jsonData="[{";
+			jsonData+="\"json数据\":\""+teacher.getTea_em()+"\",";//邮箱
+			jsonData+="\"json数据\":\""+teacher.getTea_na()+"\",";//姓名
+			jsonData+="\"json数据\":\""+teacher.getTea_ph()+"\",";//电话
+			jsonData+="\"json数据\":\""+teacher.getTea_wo()+"\",";//工作地址
+			jsonData+="}]";
+			out.print(jsonData);//返回前端json数据
 			out.flush();
 			out.close();
 		}
@@ -52,5 +43,4 @@ public class CostCensus extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
 }

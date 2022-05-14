@@ -280,4 +280,58 @@ public class QueryDB {
 		DBConnection.closeConnection();
 		return allstuData;
 	}
+	public ArrayList<forumData> allforumQuery() throws SQLException {//论坛信息
+		ArrayList<forumData> ForDatas=new ArrayList<forumData>();
+		con=DBConnection.getConnection();
+		try {
+			stmt=con.prepareStatement("select FOR_IM,FOR_ID from forum");
+		}
+		catch(Exception e){
+			System.out.println("论坛所有数据信息sql语句查找出现问题");
+		}
+		try {
+			rs=stmt.executeQuery();
+			while(rs.next())
+			{
+				forumData ForData=new forumData();
+				ForData.setFor_id(Integer.parseInt(rs.getString("FOR_ID")));
+				ForData.setFor_im(rs.getString("FOR_IM"));
+				ForDatas.add(ForData);
+			}
+		}
+		catch(Exception e) {
+			System.out.println("论坛数据信息放入出现问题");
+		}
+		rs.close();
+		stmt.close();
+		DBConnection.closeConnection();
+		return ForDatas;
+	}
+	public ArrayList<annData> allannQuery() throws SQLException {//公告信息
+		ArrayList<annData> AnnDatas=new ArrayList<annData>();
+		con=DBConnection.getConnection();
+		try {
+			stmt=con.prepareStatement("select ANN_IM,ANN_ID from announcement");
+		}
+		catch(Exception e){
+			System.out.println("公告论坛数据信息sql语句查找出现问题");
+		}
+		try {
+			rs=stmt.executeQuery();
+			while(rs.next())
+			{
+				annData AnnData = new annData();
+				AnnData.setAnn_id(Integer.parseInt(rs.getString("ANN_ID")));
+				AnnData.setAnn_im(rs.getString("ANN_IM"));
+				AnnDatas.add(AnnData);
+			}
+		}
+		catch(Exception e) {
+			System.out.println("公告数据信息放入出现问题");
+		}
+		rs.close();
+		stmt.close();
+		DBConnection.closeConnection();
+		return AnnDatas;
+	}
 }

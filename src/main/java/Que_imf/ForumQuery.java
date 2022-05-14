@@ -6,35 +6,35 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+import Datas.*;
 
-/**
- * Servlet implementation class ForumQuery
- */
+@WebServlet("/ForumQuery")
 public class ForumQuery extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public ForumQuery() {
         super();
-        // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		doPost(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");//返回text
+		int id=Integer.parseInt(request.getParameter(""));//传入论坛编号
+		PrintWriter out = response.getWriter();
+		QueryDB Query =new QueryDB();
+		try {
+			forumData fouData=Query.forumQuery(id);
+			String jsonData="[{\"json名称\":\""+fouData.getFor_im()+"\"}]";//放入论坛链接json名称
+			out.print(jsonData);
+			out.flush();
+			out.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
