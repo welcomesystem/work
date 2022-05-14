@@ -8,10 +8,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-
 import Datas.*;
 import Cre_imf.*;
 
+@WebServlet("/TeaAdd")
 public class TeaAdd extends HttpServlet {//失败输出0，成功输出1
 	private static final long serialVersionUID = 1L;
     public TeaAdd() {
@@ -23,6 +23,7 @@ public class TeaAdd extends HttpServlet {//失败输出0，成功输出1
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");//返回text
 		TeaData Teadata=new TeaData();
 		CreateIdDB CreateTeaId=new CreateIdDB();
 		AddDB PutData = new AddDB();
@@ -41,5 +42,7 @@ public class TeaAdd extends HttpServlet {//失败输出0，成功输出1
 			out.print("0");
 		else
 			out.print("1");
+		out.flush();
+		out.close();
 	}
 }

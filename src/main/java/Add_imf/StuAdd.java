@@ -1,16 +1,17 @@
 package Add_imf;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-
 import Datas.*;
 import Cre_imf.*;
 
+@WebServlet("/StuAdd")
 public class StuAdd extends HttpServlet {//失败输出0，成功输出1
 	private static final long serialVersionUID = 1L;
     public StuAdd() {
@@ -22,6 +23,7 @@ public class StuAdd extends HttpServlet {//失败输出0，成功输出1
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");//返回text
 		InfoData StuData = new InfoData();
 		AddDB PutData = new AddDB();
 		CreateIdDB CreateId=new CreateIdDB();
@@ -45,6 +47,8 @@ public class StuAdd extends HttpServlet {//失败输出0，成功输出1
 			out.print("0");
 		else
 			out.print("1");
+		out.flush();
+		out.close();
 	}
 
 }
