@@ -6,35 +6,33 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import Datas.*;
 
-/**
- * Servlet implementation class PasswdAlt
- */
+@WebServlet("/PasswdAlt")
 public class PasswdAlt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public PasswdAlt() {
         super();
-        // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		doPost(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");//返回text
+		PrintWriter out = response.getWriter();
+		accountData account = new accountData();
+		AlterDB Alter = new AlterDB();
+		account.setAcc_id(Integer.parseInt(request.getParameter("")));//账号
+		account.setAcc_access(Integer.parseInt(request.getParameter("")));//权限
+		account.setAcc_passwd(request.getParameter(""));//新密码
+		if(Alter.passwdAlt(account)==0)//返回0表示成功,1表示失败
+			out.print("0");
+		else
+			out.print("1");
+		out.flush();
+		out.close();
 	}
-
 }
