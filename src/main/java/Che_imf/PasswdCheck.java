@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+@WebServlet("/PasswdCheck")
 public class PasswdCheck extends HttpServlet {//获得账号，密码，返回验证情况，权限
 	private static final long serialVersionUID = 1L;
     public PasswdCheck() {
