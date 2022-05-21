@@ -1,0 +1,102 @@
+@charset "UTF-8";
+			 /*背景图片  */
+    body {
+      background: url("images/001.png") no-repeat;
+      background-size: 100% 140%;
+    }
+	/* 登录框 */
+    #login_box {
+    vertical-align:middle;
+      width: 20%;
+      height: 400px;
+      background-color: rgba(255, 255, 255, 0.6);
+      margin: auto;
+      margin-top: 10%;
+      text-align: center;
+      border-radius: 10px;
+      padding: 50px 50px;
+    }
+	/* “用户登录”标题  */
+    h2 {
+      color: #ffffff90;
+      margin-top: 5%;
+    }
+	
+    #input-box {
+      vertical-align:middle;
+      margin-top: 5%;
+    }
+
+    span {
+      color: #fff;
+    }
+
+    input {
+      border: 0;
+      width: 60%;
+      font-size: 15px;
+      
+      background: transparent;
+      border-bottom: 2px solid #fff;
+      padding: 5px 10px;
+      outline: none;
+      margin-top: 10px;
+    }
+
+    
+
+    #sign_up {
+      margin-top: 45%;
+      margin-left: 60%;
+    }
+
+    a {
+      color: #b94648;
+    }
+    input::-webkit-input-placeholder {
+
+       
+
+        font-size: 15px;
+
+    }
+    .v_code_div {
+            display: inline-block;
+            width: 90px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            vertical-align: middle;
+            background-color: #ddd;
+            cursor: pointer;
+        }
+			
+			/*  增加空行的div*/
+			#search_pass_link {
+				width: 80%;
+				text-align: right;
+				margin: 0 auto;
+				padding: 20px;
+			}
+			
+			/* 登录和取消按钮的样式 */
+			.btns {
+				width: 30%;
+				margin-left: 8%;
+				height: 40px;
+				border: 0;
+				font-size: 14pt;
+				font-family:"微软雅黑";
+				background-color: #FC5628;
+				color: #ffffff;
+				cursor: pointer;
+				/*设置指针鼠标的样式*/
+				border-radius: 20px;
+				/*设置圆角样式*/
+				border: 0;
+			}
+			
+			.try{
+				vertical-align:"middle";
+				
+			}
