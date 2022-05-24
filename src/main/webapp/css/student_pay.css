@@ -1,0 +1,58 @@
+@charset "UTF-8";
+/* 设置页面大小 */
+.news{
+    width:1920px;
+    height: 1080px;
+    
+}
+/* first层，欢迎提示 */
+#first{
+    background-color: #F2F2F2;
+    width:1920px;
+    height: 160px;
+    font-size: 40px;
+    padding-top: 80px;
+    border-bottom:dashed 2px #BF3338;  
+    text-align:center;
+    
+}
+/* second层和third层显示当前用户信息 */
+#second{
+    background-color: #BF3338;            
+    width:1920px;
+    height: 80px;
+    font-size: 30px;
+    padding-top: 30px;
+    color: #ffffff;
+    text-align:center;
+}
+/* second层和third层显示当前用户信息 */
+#third{
+    background-color: #F2F2F2;
+    border-top:dashed 2px #BF3338;  
+    width:1920px;
+    height: 270px;
+    font-size: 25px;
+    padding-top: 30px;
+                
+}
+/* forth层显示缴费状态 */
+#forth{
+    border-top:solid 2px #BF3338;
+    border-bottom:solid 2px #BF3338;            
+    width:1920px;
+    height: 270px;
+    font-weight: 700;
+    font-size: 25px;
+    padding-top: 30px;
+    text-align:center;
+}
+/* 按钮样式 */
+.but{
+    width: 90px;
+    height: 50px;
+    color: white;
+    background-color: #FC5628;
+    
+}
+

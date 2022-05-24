@@ -1,0 +1,65 @@
+@charset "UTF-8";
+/* 头部背景 */
+#header {
+     height:188px; position:relative;
+     background: transparent url(../header_bkg.png) repeat-x scroll top center;
+    }
+ /* 控制页面大小 */
+.main{
+	width:1920px;
+	margin:0 auto;	
+	max-width:1920px;
+	min-width:1280px;
+	/* 自动找高 */
+	overflow: hidden;	
+}
+/* 头部logo */
+#logo{
+    margin:auto;
+    padding-top:30px;
+    width: 339px;
+    height:188px; line-height:188px;
+}
+/* 管理员信息 */
+.manager{
+    margin-top: 50px;
+    margin-left: 180px;
+    font-style: normal;
+    font-size:21px;
+}
+/* 左边菜单 */
+.left_menu{ float:left; width:480px; height:900px; border-right:2px solid rgb(107, 106, 106); background-color:rgb(255, 255, 255)}
+/* 右边内容大小 */
+.right{ float:right; width:1421px; height:900px; }
+/* 菜单按钮 */
+.button_type{
+    width:200px;
+    height:60px;
+    margin-left: 160px;
+    border: 2px solid;
+}
+/* 右部外边框 */
+.right_box{
+    width: 800px;
+    height: 800px;
+    border: 2px solid;
+    margin-left: 60px;
+    margin-top: 40px;
+    padding-left:350px;	/*设置左内边距*/
+    
+}
+/* 右部输入框 */
+.right_box_input{
+    border: 1px solid ;
+    border-color: rgb(94, 95, 95);
+    width: 150px; 
+    height: 40px;
+    outline:none;
+    margin-top: 30px;
+    font-size: 15px;
+}
+/* 按钮 */
+.but{
+    width: 90px;
+    height: 50px;           
+}        
