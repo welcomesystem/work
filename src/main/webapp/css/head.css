@@ -30,6 +30,60 @@
 /*头部样式结束*/
 
 
+/* 轮播图的样式*/
+ .banner-imgBox{
+        	
+            width: 1920px;
+            height: 450px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .banner-imgBox2{
+            width: 1920px;
+            height: 450px;
+            display: flex;
+            margin: 0 auto;
+            transition: all 0.5s;
+        }
+        .banner-imgBox2>img{
+            width: 1920px;
+            height: 450px;
+        }
+        .on{
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            background-color: gainsboro;
+            margin-left: 40px;
+        }
+        .banner-imgBox-div{
+            width: 400px;
+            position: absolute;
+            bottom: 20px;
+            left: 40%;
+            display: flex;
+        }
+        .on2{
+            background-color: red;
+        }
+        .banner-imgBox-left{
+            position: absolute;
+            left: 20px;
+            top:48%;
+            width: 48px;
+            height: 48px;
+        }
+        .banner-imgBox-right{
+            position: absolute;
+            right: 20px;
+            top:48%;
+            width: 48px;
+            height: 48px;
+            margin-right: 0;
+        }
+/* */
+
 
 
 
