@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>根据一个下拉框改变另外一个下拉框的内容</title>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+</head>
+
+<body style="padding: 500px;"> 
+    
+<!第一个下拉框内容>
+<select id="initials" onchange="Change_second_selectwords();"> 
+    
+	<option value="none" selected disabled >请选择专业</option> 
+	<option value="A">软工</option> 
+	<option value="B">大数据</option> 
+	<option value="C">计算机</option> 
+</select> 
+
+
+<select id="top_domains"  onchange="select(this)">
+	
+</select> 
+
+
+<div >
+ 
+　　<div  id="div" ></div>
+ 
+　　<div id="div0" style="display:none">1班111</div>
+ 
+　　<div id="div1" style="display:none">2班111</div>
+ 
+　　<div id="div2" style="display:none">3班111</div>
+
+	<div id="div3" style="display:none">4班</div>
+ 
+　　<div id="div4" style="display:none">5班</div>
+ 
+　　<div id="div5" style="display:none">6班</div>
+
+	<div id="div6" style="display:none">7班</div>
+ 
+　　<div id="div7" style="display:none">8班</div>
+ 
+　　<div id="div8" style="display:none">9班</div>
+ 
+</div>
+
+    <script>
+        var first_keywords = {};
+        //定义每个字母对应的第二个下拉框
+        first_keywords['A'] = ['1班', '2班', '3班'];
+        first_keywords['B'] = ['4班', '5班', '6班'];
+        first_keywords['C'] = ['7班', '8班', '9班'];
+        function Change_second_selectwords() {
+            //根据id找到两个下拉框对象
+            var target1 = document.getElementById("initials");
+            var target2 = document.getElementById("top_domains");
+            //得到第一个下拉框的内容
+            var selected_initial = target1.options[target1.selectedIndex].value;
+
+            //清空第二个下拉框
+            while (target2.options.length) {
+                target2.remove(0);
+            }
+        //根据第一个下拉框的内容找到对应的列表
+        var initial_list = first_keywords[selected_initial];
+        if (initial_list) {
+        	var def= new Option("请选择班级");
+        	target2.options.add(def);
+            if(selected_initial=='A')
+            for (var i = 0; i < initial_list.length; i++) {
+            	
+                var item = new Option(initial_list[i], i);
+                //将列表中的内容加入到第二个下拉框
+                target2.options.add(item);
+            }
+            if(selected_initial=='B')
+            for (var i = 0; i < initial_list.length; i++) {
+            	
+                var item = new Option(initial_list[i], i+3);
+                //将列表中的内容加入到第二个下拉框
+                target2.options.add(item);
+            }
+            if(selected_initial=='C')
+            for (var i = 0; i < initial_list.length; i++) {
+            	
+                var item = new Option(initial_list[i], i+6);
+                //将列表中的内容加入到第二个下拉框
+                target2.options.add(item);
+            }
+
+        }
+	} 
+        function select(obj){
+        	$("#div" + obj.value).show().siblings().hide();
+        	 
+        	}
+        </script>
+</body>
+</html>
+
