@@ -1,0 +1,155 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>书本费及学杂费缴费</title>	
+<!-- 引入css样式 -->
+<link rel="stylesheet" href="../css/head.css">	
+<link rel="stylesheet" href="../css/student_pay.css">
+<link rel="stylesheet" href="../css/menu.css">	
+<style type="text/css">
+    body { font-family:Arial, Sans-Serif; font-size:15px; margin:0px;}                                 
+</style>  
+</head>
+
+<body>
+<!--最外层设置页面大小  -->
+<div class="main">
+<!-- header层在外部，包含logo层、chat层和nav下拉菜单 -->
+<div id="header">
+  <div class="logo">
+		<a href="#" >
+			<img src="../images/logo_u52.png"  alt="" >
+		</a>
+  </div>
+  <div  class="chat">
+  邮箱：12345@qq.com<br><br>
+  联系电话：10086
+  </div>
+  <!-- z-index 将下拉框置于顶层 不被下方轮播图挡住 -->
+  <!-- 通过各个菜单选项，跳转到其他页面 -->
+  <ul id="nav" style="z-index:999">
+    <li><span>学校概况</span>
+      <ul>
+        <li><a href="http://sc.xueit.com/">学校简介</a></li>
+        <li><a href="http://sc.xueit.com/">学校历史</a></li>
+        <li><a href="http://sc.xueit.com/">学校地址</a></li>
+        <li><a href="http://sc.xueit.com/">规章制度</a></li>
+      </ul>
+    </li>
+    <li><span>校园生活</span>
+      <ul>
+        <li><a href="http://sc.xueit.com/">校园地图</a></li>
+        <li><a href="http://sc.xueit.com/">食堂指南</a></li>
+        <li><a href="http://sc.xueit.com/">校园美景</a></li>
+        <li><a href="http://sc.xueit.com/">图书馆指南</a></li>
+      </ul>
+    </li>
+    <li><span>流程处理</span>
+      <ul>
+        <li><a href="http://sc.xueit.com/">宿舍办理查询</a></li>
+        <li><a href="http://sc.xueit.com/">体检流程查询</a></li>
+        <li><a href="http://sc.xueit.com/">学院登记</a></li>
+      </ul>
+    </li>
+    <li><span>个人信息</span>
+      <ul>
+        <li><a href="http://sc.xueit.com/">学籍信息</a></li>
+        <li><a href="http://sc.xueit.com/">所属学院信息</a></li>
+      </ul>
+    </li>
+    <li><span>线上支付</span>
+      <ul>
+        <li><a href="http://sc.xueit.com/">保险缴费</a></li>
+        <li><a href="http://sc.xueit.com/">水卡缴费</a></li>
+        <li><a href="http://sc.xueit.com/">饭卡缴费</a></li>
+        <li><a href="http://sc.xueit.com/">书费及学杂费</a></li>
+      </ul>
+    </li>
+    <li><span>线上论坛</span>
+      
+    </li>
+  </ul>
+</div>
+
+<!-- 轮播图 -->
+  <div class="banner-imgBox">
+        <div class="banner-imgBox2">
+            <img src="../images/001.png" alt="">
+            <img src="../images/002.png" alt="">
+            <img src="../images/003.png" alt="">
+            <img src="../images/004.png" alt="">
+            <img src="../images/month.png" alt="">
+           
+        </div>
+        <div class="banner-imgBox-div">
+            <div class="on"></div>
+            <div class="on"></div>
+            <div class="on"></div>
+            <div class="on"></div>
+            <div class="on"></div>
+        </div>
+        <img class="banner-imgBox-left" src="../images/left.png" onclick="marginLeft(false)">
+        <img class="banner-imgBox-right" src="../images/right.png" onclick="marginLeft(true)">
+  </div>
+  <!-- 缴费相关内容 -->
+  <div class="news">
+    <!-- first层，欢迎提示 -->
+    <div id="first">欢迎使用饭卡缴费系统</div>
+    <!-- second层和third层显示当前用户信息 -->
+    <div id="second">当前用户>></div>
+    <div id="third" >
+        <div style="float: left; padding-left: 500px;">学号:<br><br>姓名:<br><br>性别:</div>
+        <div style="float: right; padding-right: 550px;">班级:<br><br>专业:<br><br>院系:</div>       
+    </div>
+    <!-- forth层显示缴费状态 -->
+    <div id="forth" name="forth" style="position: relative;">饭卡余额：元  
+        
+        <div style="margin-top: 30px;"> 
+            <input class="but" type="button" id="pay" value="充值" onclick="pay()" onmouseover="this.style.backgroundColor='#FF8D00'" onmouseout="this.style.backgroundColor='#FC5628'"> 
+            <input class="but" type="button" id="goback" value="返回首页" onclick="goback()" style="margin-left:40px ;" onmouseover="this.style.backgroundColor='#FF8D00'" onmouseout="this.style.backgroundColor='#FC5628'">
+        </div>
+        <div id="confirm" hidden="true" style="position: absolute; border:solid 1px; margin-left: 730px; top: 0px;background-color: rgb(255, 255, 255); height: 300px;width: 500px; "  >
+          <form name="frm" style="padding-top: 40px;" >
+            <div>请输入充值金额:<input type="text" id="" name="" style="font-size: 22px; width: 120px; height: 30px; border-radius: 5px;">元</div><br>
+          </form>
+          <input class="but" type="button" id="confirm" value="确认充值" onclick="confirm()" style="margin-top: 60px;" onmouseover="this.style.backgroundColor='#FF8D00'" onmouseout="this.style.backgroundColor='#FC5628'">
+            <input class="but" type="button" id="cancel" value="取消" onclick="cancel()" style="margin-left:40px ;" onmouseover="this.style.backgroundColor='#FF8D00'" onmouseout="this.style.backgroundColor='#FC5628'">
+        </div>
+    </div>
+    
+</div>
+
+</div>
+</body>
+<!-- 轮播图js代码 -->
+<script  src="../js/banner.js"></script>
+<script>
+  //缴费
+  function pay(){
+    document.getElementById('confirm').removeAttribute('hidden')
+  }
+  //返回首页
+  function goback(){
+    window.location.href='../index.html'
+  }
+  //确认缴费
+  function confirm(){
+    document.getElementById('confirm').setAttribute('hidden',true);
+    document.getElementById('yes').removeAttribute('hidden');
+    document.getElementById('no').setAttribute('hidden',true);
+  }
+  //取消
+  function cancel(){
+    document.getElementById('confirm').setAttribute('hidden',true);
+  }
+</script>
+</html>
+
+
+
+
+
+
+
+
