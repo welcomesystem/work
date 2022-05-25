@@ -12,32 +12,25 @@ public class JudgeDB {
 		String RemQuery=null;
 		con=DBConnection.getConnection();
 		try {
-			stmt=con.prepareStatement("select ? form ? where ?=?");//根据id来判断身份返回判断
 			if(id==100000)//管理员账号为100000
 			{
 				Jud=0;
 				RemQuery="PAS_AD";
-				stmt.setString(1,"PAS_AD");
-				stmt.setString(2,"admin_");
-				stmt.setString(3,"ADMINS");
-				stmt.setInt(4,id);
+				stmt=con.prepareStatement("select PAS_AD from admin_ where ADMINS=?");//根据id来判断身份返回判断
+				stmt.setInt(1,id);
 			}
 			else if(id/1000000==0)//教职工账号为6位，除100000为0
 			{
 				RemQuery="PAS_TE";
-				stmt.setString(1,"PAS_TE,TEA_ROOT");
-				stmt.setString(2,"teacher");
-				stmt.setString(3,"TEA_ID");
-				stmt.setInt(4,id);
+				stmt=con.prepareStatement("select PAS_TE,TEA_ROOT from teacher where TEA_ID=?");//根据id来判断身份返回判断
+				stmt.setInt(1,id);
 			}
 			else//学生账号
 			{
 				Jud=1;
 				RemQuery="PAS_ST";
-				stmt.setString(1,"PAS_ST");
-				stmt.setString(2,"student");
-				stmt.setString(3,"STU_ID");
-				stmt.setInt(4,id);
+				stmt=con.prepareStatement("select PAS_ST from student where STU_ID=?");//根据id来判断身份返回判断
+				stmt.setInt(1,id);
 			}
 		}
 		catch(Exception e){
