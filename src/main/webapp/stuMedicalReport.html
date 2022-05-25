@@ -1,0 +1,175 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>体检流程</title>	
+<link rel="stylesheet" href="css/head.css">	
+<link rel="stylesheet" href="css/menu.css">	
+<link rel="stylesheet" href="css/status.css">	
+	<!-- 下拉菜单的样式-->
+	<style type="text/css">
+      body { 
+            font-family:Arial, Sans-Serif; font-size:15px; margin:0px;
+            background: transparent url(page_bkg.png) repeat scroll top center;
+      }
+                    
+  </style>
+   
+   
+</head>
+<body>
+  <!-- 背景图片 -->
+  <!-- <img class="backgroundPic" src="./images/status_background.jpg" alt=""> -->
+<!--最外层yys  -->
+<div class="status_main">
+<!-- header层在外部，包含logo层、chat层和nav下拉菜单 -->
+<div id="header">
+  <div class="logo">
+		<a href="#" >
+			<img src="images/logo_u52.png"  alt="" >
+		</a>
+  </div>
+  <div  class="chat">
+  邮箱：12345@qq.com<br><br>
+  联系电话：10086
+  </div>
+  <!-- z-index 将下拉框置于顶层 不被下方轮播图挡住 -->
+  <!-- 通过各个菜单选项，跳转到其他页面 -->
+  <ul id="nav" style="z-index:999">
+    <li><span>学校概况</span>
+      <ul>
+        <li><a href="http://sc.xueit.com/">学校简介</a></li>
+        <li><a href="http://sc.xueit.com/">学校历史</a></li>
+        <li><a href="http://sc.xueit.com/">学校地址</a></li>
+        <li><a href="http://sc.xueit.com/">规章制度</a></li>
+      </ul>
+    </li>
+    <li><span>校园生活</span>
+      <ul>
+        <li><a href="http://sc.xueit.com/">校园地图</a></li>
+        <li><a href="http://sc.xueit.com/">食堂指南</a></li>
+        <li><a href="http://sc.xueit.com/">校园美景</a></li>
+        <li><a href="http://sc.xueit.com/">图书馆指南</a></li>
+      </ul>
+    </li>
+    <li><span>流程处理</span>
+      <ul>
+        <li><a href="http://sc.xueit.com/">宿舍办理查询</a></li>
+        <li><a href="http://sc.xueit.com/">体检流程查询</a></li>
+        <li><a href="http://sc.xueit.com/">学院登记</a></li>
+      </ul>
+    </li>
+    <li><span>个人信息</span>
+      <ul>
+        <li><a href="http://sc.xueit.com/">学籍信息</a></li>
+        <li><a href="http://sc.xueit.com/">所属学院信息</a></li>
+      </ul>
+    </li>
+    <li><span>线上支付</span>
+      <ul>
+        <li><a href="http://sc.xueit.com/">保险缴费</a></li>
+        <li><a href="http://sc.xueit.com/">水卡缴费</a></li>
+        <li><a href="http://sc.xueit.com/">饭卡缴费</a></li>
+        <li><a href="http://sc.xueit.com/">书费及学杂费</a></li>
+      </ul>
+    </li>
+    <li><span>线上论坛</span>
+      
+    </li>
+  </ul>
+
+
+</div><!-- header层 -->
+
+  <!-- 宿舍办理流程 -->
+  
+  <div class="headPic">
+    <!-- 横幅图片 -->
+    <img src="images/stuDormBanner.jpg" alt=""> 
+    <p class="callTag">体检流程</p>
+  </div>
+  <!-- 副标题：宿舍办理流程 -->
+  <div class="completion_status">
+    <div class="subhead">体检流程明细</div>
+    <span class="person_status">
+        <text>
+            个人完成状态：
+        </text>
+        <input type="radio" id="completed" checked/>已完成
+        <input type="radio" id="uncompleted" checked/>未完成
+    </span>
+    <div class="right"></div>
+  </div>
+
+  <!-- 左侧菜单 -->
+  <div class="left_menu">
+    <button class="button"  id="stuDormStatus" onmouseover="this.style.backgroundColor='#bf3338'"><a href="./stuDorm.html" style="text-decoration:none;color:black" >宿舍办理</a></button>
+    <button class="button" style="background-color: #bf3338;" id="stuDormStatus" onmouseover="this.style.backgroundColor='#bf3338'" onmouseout="this.style.backgroundColor='#ffffff'"><a href="./stuMedicalReport.html" style="text-decoration:none;color:black" >体检流程</a></button>
+    <button class="button" id="stuDormStatus" onmouseover="this.style.backgroundColor='#bf3338'" onmouseout="this.style.backgroundColor='#ffffff'"><a href="./stuRegister.html" style="text-decoration:none;color:black" >学院登记</a></button>
+  </div>
+
+
+  <div class="right_content">
+    <span class=""><img src="images/leadingSymbol.png" alt=""><text class="right_content_text">
+      时间安排：20XX年X月X日至20XX年X月XX      上午9:00-11：30      下午2:00-5:30
+    </text></span>
+    <br/><br/><br/>
+
+    <span><img src="images/leadingSymbol.png" alt=""><text class="right_content_text">
+      体检地点：双中心一楼及双中心旁广场
+    </text></span>
+    <br/><br/><br/>
+
+    <span><img src="images/leadingSymbol.png" alt=""><text class="right_content_text">
+      项目内容明细及费用（根据市医疗项目收费相关规定指定收费明细）：
+    </text></span>
+    <br/><br/><br/>
+
+    <span><image class="right_pic" src="./images/medical_form.png">
+    </image></span>
+    <br/><br/><br/>
+    
+    <span><img src="images/leadingSymbol.png" alt=""><text class="right_content_text">
+      体检收费：收费合计XX元/人。请各位新生于X月X日24时前缴纳体检费用
+    </text></span>
+    <br/><br/><br/>
+
+    <span><img src="images/leadingSymbol.png" alt=""><text class="right_content_text">
+      注意事项：
+    </text></span>
+    <br/>
+
+    <span><img><text class="right_content_text" style="margin-left: 40px;">
+      1.体检前一天及当天：体检前一天应清淡饮食，禁酒，保证睡眠。体检当天需空腹，采血后方可进食
+    </text></span>
+    <br/>
+
+    <span><img><text class="right_content_text" style="margin-left: 40px;">
+      2.准备材料：居民身份证
+    </text></span>
+    <br/>
+
+    <span><img><text class="right_content_text" style="margin-left: 40px;">
+      3.体检表及化验单填写：内容填写完整、字迹清晰完整
+    </text></span>
+    <!-- 下方留白 -->
+    <br/><br/><br/><br/><br/><br/>
+    <div> </div>
+  
+  </div>
+
+</div>
+</body>
+<script  src="js/jquery-1.11.3.min.js"></script>
+<script  src="js/status.js"></script>
+
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,143 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>宿舍办理</title>	
+<link rel="stylesheet" href="css/head.css">	
+<link rel="stylesheet" href="css/menu.css">	
+<link rel="stylesheet" href="css/status.css">	
+	<!-- 下拉菜单的样式-->
+	<style type="text/css">
+      body { 
+            font-family:Arial, Sans-Serif; font-size:15px; margin:0px;
+            background: transparent url(page_bkg.png) repeat scroll top center;
+      }
+                    
+  </style>
+   
+   
+</head>
+<body>
+  <!-- 背景图片 -->
+  <!-- <img class="backgroundPic" src="./images/status_background.jpg" alt=""> -->
+<!--最外层yys  -->
+<div class="status_main">
+<!-- header层在外部，包含logo层、chat层和nav下拉菜单 -->
+<div id="header">
+  <div class="logo">
+		<a href="#" >
+			<img src="images/logo_u52.png"  alt="" >
+		</a>
+  </div>
+  <div  class="chat">
+  邮箱：12345@qq.com<br><br>
+  联系电话：10086
+  </div>
+  <!-- z-index 将下拉框置于顶层 不被下方轮播图挡住 -->
+  <!-- 通过各个菜单选项，跳转到其他页面 -->
+  <ul id="nav" style="z-index:999">
+    <li><span>学校概况</span>
+      <ul>
+        <li><a href="http://sc.xueit.com/">学校简介</a></li>
+        <li><a href="http://sc.xueit.com/">学校历史</a></li>
+        <li><a href="http://sc.xueit.com/">学校地址</a></li>
+        <li><a href="http://sc.xueit.com/">规章制度</a></li>
+      </ul>
+    </li>
+    <li><span>校园生活</span>
+      <ul>
+        <li><a href="http://sc.xueit.com/">校园地图</a></li>
+        <li><a href="http://sc.xueit.com/">食堂指南</a></li>
+        <li><a href="http://sc.xueit.com/">校园美景</a></li>
+        <li><a href="http://sc.xueit.com/">图书馆指南</a></li>
+      </ul>
+    </li>
+    <li><span>流程处理</span>
+      <ul>
+        <li><a href="http://sc.xueit.com/">宿舍办理查询</a></li>
+        <li><a href="http://sc.xueit.com/">体检流程查询</a></li>
+        <li><a href="http://sc.xueit.com/">学院登记</a></li>
+      </ul>
+    </li>
+    <li><span>个人信息</span>
+      <ul>
+        <li><a href="http://sc.xueit.com/">学籍信息</a></li>
+        <li><a href="http://sc.xueit.com/">所属学院信息</a></li>
+      </ul>
+    </li>
+    <li><span>线上支付</span>
+      <ul>
+        <li><a href="http://sc.xueit.com/">保险缴费</a></li>
+        <li><a href="http://sc.xueit.com/">水卡缴费</a></li>
+        <li><a href="http://sc.xueit.com/">饭卡缴费</a></li>
+        <li><a href="http://sc.xueit.com/">书费及学杂费</a></li>
+      </ul>
+    </li>
+    <li><span>线上论坛</span>
+      
+    </li>
+  </ul>
+
+
+</div><!-- header层 -->
+
+  <!-- 宿舍办理流程 -->
+  
+  <div class="headPic">
+    <!-- 横幅图片 -->
+    <img src="images/stuDormBanner.jpg" alt=""> 
+    <p class="callTag">宿舍办理</p>
+  </div>
+  <!-- 副标题：宿舍办理流程 -->
+  <div class="completion_status">
+    <div class="subhead">宿舍办理流程</div>
+    <span class="person_status">
+        <text>
+            个人完成状态：
+        </text>
+        <input type="radio" id="completed" checked >已完成</input>
+        <input type="radio" id="uncompleted" checked>未完成</input>
+    </span>
+    <div class="right"></div>
+  </div>
+  <!-- 左侧菜单 -->
+  <div class="left_menu">
+    <button class="button" style="background-color: #bf3338;" id="stuDormStatus" onmouseover="this.style.backgroundColor='#bf3338'"><a href="./stuDorm.html" style="text-decoration:none;color:black" >宿舍办理</a></button>
+    <button class="button" id="stuDormStatus" onmouseover="this.style.backgroundColor='#bf3338'" onmouseout="this.style.backgroundColor='#ffffff'"><a href="./stuMedicalReport.html" style="text-decoration:none;color:black" >体检流程</a></button>
+    <button class="button" id="stuDormStatus" onmouseover="this.style.backgroundColor='#bf3338'" onmouseout="this.style.backgroundColor='#ffffff'"><a href="./stuRegister.html" style="text-decoration:none;color:black" >学院登记</a></button>
+  </div>
+
+  <div class="right_content">
+    <span class=""><img src="images/leadingSymbol.png" alt=""><text class="right_content_text">
+      前往16栋一楼大厅签名并确认门牌号
+    </text></span>
+    <br/><br/><br/>
+    <span><img src="images/leadingSymbol.png" alt=""><text class="right_content_text">
+      领取寝室钥匙并在表上勾选已领取选项
+    </text></span>
+    <br/><br/><br/>
+    <span><img src="images/leadingSymbol.png" alt=""><text class="right_content_text">
+      领取空调遥控器并在表上勾选已领取选项
+    </text></span>
+    
+    <!-- 下方留白 -->
+    <br/><br/><br/><br/><br/><br/>
+    <div> </div>
+  
+  </div>
+
+</div>
+</body>
+<script  src="js/jquery-1.11.3.min.js"></script>
+<script  src="js/status.js"></script>
+
+</html>
+
+
+
+
+
+
+
+
