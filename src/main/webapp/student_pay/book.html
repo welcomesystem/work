@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>书本费及学杂费缴费</title>	
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
 <!-- 引入css样式 -->
 <link rel="stylesheet" href="../css/head.css">	
 <link rel="stylesheet" href="../css/student_pay.css">
@@ -10,9 +11,14 @@
 <style type="text/css">
     body { font-family:Arial, Sans-Serif; font-size:15px; margin:0px;}                                 
 </style>  
+<script>
+  function showinfo(){
+    document.getElementById('info2').removeAttribute('hidden')
+  }
+</script>
 </head>
 
-<body>
+<body onload="showinfo()">
 <!--最外层设置页面大小  -->
 <div class="main">
 <!-- header层在外部，包含logo层、chat层和nav下拉菜单 -->
@@ -99,22 +105,45 @@
     <!-- second层和third层显示当前用户信息 -->
     <div id="second">当前用户>></div>
     <div id="third" >
-        <div style="float: left; padding-left: 500px;">学号:<br><br>姓名:<br><br>性别:</div>
-        <div style="float: right; padding-right: 550px;">班级:<br><br>专业:<br><br>院系:</div>       
+      <div id="info1" style="float: left; padding-left: 300px; " hidden="true">学号:<br><br><br>姓名:<br><br><br>缴费状态:<td><font color="green">已缴费</font></td><br><br><br>截至日期:2022年9月1日</div>
+      <div id="info2" style="float: left; padding-left: 300px; " hidden="true">学号:<br><br><br>姓名:<br><br><br>缴费状态:<td><font color="red">未缴费</font></td><br><br><br>截至日期:2022年9月1日</div>
+        <div style="margin-left: 1000px ;">
+          <input type="button" value="点击进行缴费" onclick="jiaofei();" style="height: 40px;width: 120px; " ><br>
+          <div hidden="true" id="pay">
+          <tr>
+            <br><td>付款方式：</td>
+            <select onchange="select(this)" style="height: 40px;width: 120px;">
+              <option selected hidden disabled value="">请选择</option>
+              <option value="1" >支付宝支付</option>
+              <option value="2">微信支付</option>
+            </select>(请在5分钟内完成付款)
+          </tr><br>
+          <img id="pic1" src="../images/pay1.png" style="width: 200px;height: 200px; display: none; " >
+          <img id="pic2" src="../images/pay2.png" style="width: 200px;height: 200px; display: none; ">
+          <br><input id="ok" onclick="ok()" type="button" value="已完成缴费" hidden="true"><input id="no" onclick="no()" type="button" value="取消" hidden="true" style="margin-left: 40px;">
+          </div>
+        </div>
+                  
     </div>
-    <!-- forth层显示缴费状态 -->
-    <div id="forth" name="forth" style="position: relative;">书费及学杂费收费：5000元  
+    <!-- forth层显示按钮 -->
+    <div id="forth" name="forth" style="position: relative;">  
+      <!--  
         <div hidden="true" id="yes" name="state" style="margin-top: 30px; ">缴费状态:已缴费 <div><input type="image" src="../images/ok.png" style="margin-top: 10px;"></div> </div>
         <div  id="no" name="state" style="margin-top: 30px;">缴费状态:未缴费</div>
+      -->
+<!--         刷新和返回首页按钮 -->
         <div style="margin-top: 30px;"> 
-            <input class="but" type="button" id="pay" value="缴费" onclick="pay()" onmouseover="this.style.backgroundColor='#FF8D00'" onmouseout="this.style.backgroundColor='#FC5628'"> 
-            <input class="but" type="button" id="goback" value="返回首页" onclick="goback()" style="margin-left:40px ;" onmouseover="this.style.backgroundColor='#FF8D00'" onmouseout="this.style.backgroundColor='#FC5628'">
+            <input class="but" type="button" id="pay" value="刷新" onclick="javascript:location.reload()" onmouseover="this.style.backgroundColor='#FF8D00'" onmouseout="this.style.backgroundColor='#FC5628'"> 
+            <input class="but" type="button" id="goback" value="返回首页" onclick="window.location.href='../student_index.html'" style="margin-left:40px ;" onmouseover="this.style.backgroundColor='#FF8D00'" onmouseout="this.style.backgroundColor='#FC5628'">
         </div>
+<!--         点击缴费后显示确认框 
         <div id="confirm" hidden="true" style="position: absolute; border:solid 1px; margin-left: 730px; top: 0px;background-color: rgb(255, 255, 255); height: 300px;width: 500px;"  >
           <p style="text-align:center ;">是否确认缴费?</p><br>
           <input class="but" type="button" id="confirm" value="确认缴费" onclick="confirm()" onmouseover="this.style.backgroundColor='#FF8D00'" onmouseout="this.style.backgroundColor='#FC5628'">
             <input class="but" type="button" id="cancel" value="取消" onclick="cancel()" style="margin-left:40px ;" onmouseover="this.style.backgroundColor='#FF8D00'" onmouseout="this.style.backgroundColor='#FC5628'">
         </div>
+-->
+        
     </div>
     
 </div>
@@ -124,14 +153,39 @@
 <!-- 轮播图js代码 -->
 <script  src="../js/banner.js"></script>
 <script>
+  
+  //缴费
+  function jiaofei(){
+    document.getElementById('pay').removeAttribute('hidden')
+  }
+
+  function select(obj){
+    document.getElementById('ok').removeAttribute('hidden');
+    document.getElementById('no').removeAttribute('hidden');
+	  		if(obj.value==1){
+        		$("#pic1").show();
+        		$("#pic2").hide();
+	  		}
+	  		if(obj.value==2){
+        		$("#pic2").show();
+        		$("#pic1").hide();
+	  		}
+        	}
+        
+  function no(){
+    document.getElementById('pay').setAttribute('hidden',true);
+  }
+  function ok(){
+    document.getElementById('pay').setAttribute('hidden',true);
+    document.getElementById('info2').setAttribute('hidden',true);
+    document.getElementById('info1').removeAttribute('hidden');
+  }
+  /* 
   //缴费
   function pay(){
     document.getElementById('confirm').removeAttribute('hidden')
   }
-  //返回首页
-  function goback(){
-    window.location.href='../index.html'
-  }
+  
   //确认缴费
   function confirm(){
     document.getElementById('confirm').setAttribute('hidden',true);
@@ -142,6 +196,7 @@
   function cancel(){
     document.getElementById('confirm').setAttribute('hidden',true);
   }
+  */
 </script>
 </html>
 
