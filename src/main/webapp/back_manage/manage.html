@@ -6,7 +6,6 @@
 <!-- 引入js文件 -->
 <script type="text/javascript" src="../js/birthdays.js"></script>
 <script type="text/javascript" src="../js/nation.js"></script>
-
 <script type="text/javascript" src="../js/back_show.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- 引入css样式 -->
@@ -30,48 +29,61 @@ body { font-family:Arial, Sans-Serif; font-size:15px; margin:0px;}
         <!-- 左边菜单 -->
         <div class="left_menu">
             <div class="manager">
-                管理员：admin
+                管理员：100000
             </div>
             <input type="button" class="button_type" value="学生信息添加" id="student_add" onclick="show_addstu()" onmouseover="this.style.backgroundColor='#BF3338'" onmouseout="this.style.backgroundColor='#F2F2F2'" style="margin-top: 80px;cursor: pointer;" >
             <input type="button" class="button_type" value="教职工信息添加" id="teacher_add" onclick="show_addtea()" onmouseover="this.style.backgroundColor='#BF3338'" onmouseout="this.style.backgroundColor='#F2F2F2'" style="margin-top: 80px;cursor: pointer;">
             <input type="button" class="button_type" value="公告管理" id="announcement" onclick="show_anno()" onmouseover="this.style.backgroundColor='#BF3338'" onmouseout="this.style.backgroundColor='#F2F2F2'" style="margin-top: 80px;cursor: pointer;">
         </div>
+        
         <!-- 右边区域大小 -->
         <div class="right">
           <!-- 右部外边框 -->
             <div class="right_box">
+            
               <!-- 学生信息添加表单 -->
-              <form id="frm_AddStudent" action=""  >                
+              <form id="frm_AddStudent" name="frm_AddStudent">                
                 <p style="font-size: 35px; font-weight: bold; padding-left: 110px;">学生信息添加</p>                
                 <img src="../images/avatar.jpg" id="preview" alt="" style="width: 150px;height: 150px;padding-left: 140px;"><br>
                 <p style="margin-left: 100px;">上传头像:<input type="file" id="avatar" onchange="selectAvatar()" accept="image/*" /></p>
-                姓名：<input type="text" class="right_box_input" id="student_name_add" placeholder="请输入姓名" style="margin-right: 60px;" >
-                宿舍：<input type="text" class="right_box_input" id="" placeholder="请输入宿舍号" style="margin-left: 30px;" ><br>
-                班级：<input type="text" class="right_box_input" id="" placeholder="请输入所在班级" style="margin-right: 60px;">
-                身份证号：<input type="text" class="right_box_input" id="" placeholder="请输入身份证号" ><br><br><br>
-                民族：<select id="national" style="height: 40px;width:156px;margin-right: 60px;">
+                姓名：<input type="text" class="right_box_input" id="stu_name" name="stu_name" value="" placeholder="请输入姓名" style="margin-right: 60px;" >
+                政治面貌：<select class="right_box_input" style="width:155px" name="posta" id="posta">
+                	<option value="0">请选择</option>
+                	<option value="1">群众</option>
+                	<option value="2">团员</option>
+                	<option value="3">党员</option>
+                </select><br>
+                宿舍号：<input type="text" class="right_box_input" id="stu_dormitory" name="stu_dormitory" value="" placeholder="请输入宿舍号" style="margin-right: 58px; width:136px" >
+                宿舍栋数：<input type="text" class="right_box_input" id="stu_build" name="stu_build" value="" placeholder="请输入宿舍栋数"  ><br>
+                
+                班级：<input type="text" class="right_box_input" id="stu_class" name="stu_class" value="" placeholder="请输入所在班级" style="margin-right: 60px;">
+                身份证号：<input type="text" class="right_box_input" id="stu_id_num" name="stu_id_num" value="" placeholder="请输入身份证号" ><br><br><br>
+                民族：<select id="national" name="national" style="height: 40px;width:156px;margin-right: 60px;">
                 </select>
                 省份:<select name="province" id="province" class='province' msgEmpty="请选择省份" style="height: 40px;">
 			         <option value="">请选择</option>
 			        </select>			        
-			        &nbsp;&nbsp;&nbsp; 市:<select name="city" id="city" class='city' msgEmpty="请选择城市" style="height: 40px;">
+			    &nbsp;&nbsp;&nbsp; 
+			    市:<select name="city" id="city" class='city' msgEmpty="请选择城市" style="height: 40px;">
 			         <option value="">请选择</option>
 			       </select>
                 <br><br><br>
-                性别：<input type="radio" name="sex"  id="sex1" value="0" >男<input type="radio" name="sex" id="sex2" value="1" >女<br><br><br>                
+                性别：<input type="radio" name="sex"  id="sex1" value="0" >男<input type="radio" name="sex" id="sex2" value="1" >女&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                    
                 出生日期：
                 <select size="1" name="year" id="year" style="width:80px; height:40px" onfocus="years('year',new Date().getFullYear()),change_date()" onchange="change_date()"></select>年&nbsp;
                 <select size="1" name="month" id="month" style="width:48px; height:40px" onfocus="months(),change_date()" onchange="change_date()"></select>月&nbsp;
                 <select size="1" name="date" id="date" style="width:48px; height:40px" ></select>日
                 <div style="margin-top: 30px; margin-left: 120px;">
-                <input class="but" type="submit" value="保存" > 
+                <input class="but" type="submit" value="保存并提交" onclick="add_student()"> 
                 <input class="but" type="reset" value="重置" style="margin-left:40px ;" onclick="func()">
                 </div>
               </form>
+              
               <!-- 公告管理表单 -->
-              <form id="frm_Announce" action="" hidden="true">
+              
+              <form id="frm_Announce" hidden="true">
                 <p style="font-size: 35px; font-weight: bold; padding-left: 110px;">公告管理</p>
-                <input type="text" placeholder="查找请输入公告编号" style="height: 60px;width: 240px;padding-left: 55px;margin-left: 40px;font-size: 20px;"><br>
+                <input type="text" placeholder="查找请输入公告编号" id="" name="" style="height: 60px;width: 240px;padding-left: 55px;margin-left: 40px;font-size: 20px;"><br>
                 <div style="margin-top: 30px; ">
                 <input type="button" value="添加新公告" onclick="anno_add()" style="border-radius: 10px; font-size: 20px; width: 180px ;height: 50px;border:solid 1px;cursor: pointer;">
                 <input type="button" value="查找" onclick="anno_search()" style="margin-left: 40px; border-radius: 10px; font-size: 20px; width: 180px ;height: 50px;border:solid 1px;cursor: pointer;">
@@ -80,29 +92,29 @@ body { font-family:Arial, Sans-Serif; font-size:15px; margin:0px;}
                <!-- 公告管理中的公告添加表单 -->
               <form id="add_Announce" hidden="true">
                 <div style="font-size: 35px; border:solid 1px; width: 300px; height: 60px; text-align: center; margin-top: 50px;">公告内容</div>
-                <textarea rows="20" cols="70" style="overflow-y:scroll; margin-top: 50px;margin-left: -90px;"></textarea><br>
+                <textarea rows="20" cols="70" id="" name="" style="overflow-y:scroll; margin-top: 50px;margin-left: -90px;"></textarea><br>
                 <div style="margin-top: 30px; "></div>
                 <input type="button" value="保存并提交" onclick="anno_save()" style="border-radius: 10px; font-size: 20px; width: 180px ;height: 50px;border:solid 1px;margin-left: -30px;cursor: pointer;">
                 <input type="button" value="取消" onclick="anno_cancel()" style="margin-left: 40px; border-radius: 10px; font-size: 20px; width: 180px ;height: 50px;border:solid 1px;cursor: pointer;">
                 
               </form>
               <!-- 教职工添加表单 -->
-              <form id="frm_AddTeacher" hidden="true">
+              <form id="frm_AddTeacher" hidden="true" name="frm_AddStudent">
                 <!-- 姓名 职位 宿管2 辅导员3 院长4 电话 邮箱 办公地址 -->
                 <p style="font-size: 35px; font-weight: bold; padding-left: 110px;">教职工信息添加</p>
                 <img src="../images/avatar.jpg" id="preview" alt="" style="width: 150px;height: 150px;padding-left: 140px;"><br>
                 <p style="margin-left: 100px;">上传头像:<input type="file" id="avatar" onchange="selectAvatar()" accept="image/*" /></p>
-                姓名：<input type="text" class="right_box_input" id="student_name_add" placeholder="请输入姓名" style="margin-right: 60px;" >
-                职位：<select class="right_box_input" id="" value="" style="width: 155px;height: 45px;" >
+                姓名：<input type="text" class="right_box_input" id="tea_name" name="tea_name" value="" placeholder="请输入姓名" style="margin-right: 60px;" >
+                职位：<select class="right_box_input" id="tea_po" name="tea_po" style="width: 155px;height: 45px;" >
                       <option value="2">宿管</option>
                       <option value="3">辅导员</option>
                       <option value="4">院长</option>
                       </select><br>
-                电话：<input type="text" class="right_box_input" id="" placeholder="请输入电话号码" style="margin-right: 60px;">
-                邮箱：<input type="text" class="right_box_input" id="" placeholder="请输入邮箱" ><br>
-                办公地址：<input type="text" class="right_box_input" id="student_name_add" placeholder="请输入办公地址" style="margin-right: 60px; width: 120px;" >
+                电话：<input type="text" class="right_box_input" id="tea_ph" name="tea_ph" value="" placeholder="请输入电话号码" style="margin-right: 60px;">
+                邮箱：<input type="text" class="right_box_input" id="tea_em" name="tea_em" value="" placeholder="请输入邮箱" ><br>
+                办公地址：<input type="text" class="right_box_input" id="tea_wo" name="tea_wo" value="" placeholder="请输入办公地址" style="margin-right: 60px; width: 120px;" >
                 <div style="margin-top: 30px; margin-left: 120px;">
-                  <input class="but" type="submit" value="保存" > 
+                  <input class="but" type="submit" value="保存并提交" onclick="add_teacher()"> 
                   <input class="but" type="reset" value="重置" style="margin-left:40px ;" onclick="func()">    
                 </div>    
               </form>
@@ -113,8 +125,11 @@ body { font-family:Arial, Sans-Serif; font-size:15px; margin:0px;}
     </div>
 
 </body>
-<!-- 引入设置头像js文件 -->
+<!-- 引入设置头像、区域设置js文件 -->
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="../js/avatar.js"></script>
 <script type="text/javascript" src="../js/region.js"></script>
+<script type="text/javascript" src="../js/Add/add_student.js"></script>
+<script type="text/javascript" src="../js/Add/add_teacher.js"></script>
 
 </html>
