@@ -27,10 +27,11 @@ public class TeaAdd extends HttpServlet {//失败输出0，成功输出1
 		TeaData Teadata=new TeaData();
 		CreateIdDB CreateTeaId=new CreateIdDB();
 		AddDB PutData = new AddDB();
-		Teadata.setTea_em(request.getParameter(""));//前端传入教职工邮箱
-		Teadata.setTea_na(request.getParameter(""));//前端传入教职工姓名
-		Teadata.setTea_ph(request.getParameter(""));//前端传入教职工电话
-		Teadata.setTea_wo(request.getParameter(""));//前端传入教职工办公室
+		Teadata.setTea_em(request.getParameter("tea_em"));//前端传入教职工邮箱
+		Teadata.setTea_na(request.getParameter("tea_name"));//前端传入教职工姓名
+		Teadata.setTea_ph(request.getParameter("tea_ph"));//前端传入教职工电话
+		Teadata.setTea_wo(request.getParameter("tea_wo"));//前端传入教职工办公室
+		Teadata.setTea_po(Integer.parseInt(request.getParameter("tea_po")));//前端传入教师职位)
 		try {
 			Teadata.setTea_id(CreateTeaId.CreateTeaIdDB());
 		} 
@@ -38,7 +39,7 @@ public class TeaAdd extends HttpServlet {//失败输出0，成功输出1
 			e.printStackTrace();
 		}
 		PrintWriter out = response.getWriter();
-		if(PutData.addTea(Teadata)==0)
+		if(PutData.addTea(Teadata)==0||PutData.addTeaAccount(Teadata)==0)//0表示添加失败
 			out.print("0");
 		else
 			out.print("1");
