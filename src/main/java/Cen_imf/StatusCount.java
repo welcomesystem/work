@@ -20,7 +20,7 @@ public class StatusCount extends HttpServlet {//统计费用信息
 			throws ServletException, IOException {
 		doPost(request, response);
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");//返回text
 		CensusDB Census=new CensusDB();
